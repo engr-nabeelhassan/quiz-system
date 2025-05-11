@@ -1,1 +1,1 @@
-<h1>Welcome For Quiz-System</h1>
+<h2>Welcome Quis-System</h2>

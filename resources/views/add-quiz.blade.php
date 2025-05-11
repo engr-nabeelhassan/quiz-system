@@ -30,39 +30,40 @@
     @else
     <span class=" text-green-500 font-bold">Quiz : {{session('quizDetails')->name}}</span>
     <h2 class=" text-2xl text-center text-gray-800 mb-6">Add MCQs</h2>
-    <form action="" method="get" class="space-y-4">
+    <form action="add-mcq" method="post" class="space-y-4">
+        @csrf
     <div>
-            <textarea type="text" name="quiz" placeholder="Enter Your Question"
+            <textarea type="text" name="question" placeholder="Enter Your Question"
             class=" w-full px-4 py-2 border border-gray-300 rounded-xl"></textarea>
         </div>
         <div>
-            <input type="text" name="quiz" placeholder="Enter First option"
+            <input type="text" name="a" placeholder="Enter First option"
             class=" w-full px-4 py-2 border border-gray-300 rounded-xl">
         </div>
         <div>
-            <input type="text" name="quiz" placeholder="Enter Second option"
+            <input type="text" name="b" placeholder="Enter Second option"
             class=" w-full px-4 py-2 border border-gray-300 rounded-xl">
         </div>
         <div>
-            <input type="text" name="quiz" placeholder="Enter Third option"
+            <input type="text" name="c" placeholder="Enter Third option"
             class=" w-full px-4 py-2 border border-gray-300 rounded-xl">
         </div>
         <div>
-            <input type="text" name="quiz" placeholder="Enter Fourth option"
+            <input type="text" name="d" placeholder="Enter Fourth option"
             class=" w-full px-4 py-2 border border-gray-300 rounded-xl">
         </div>
         <div>
-            <select  name="right answer" 
+            <select  name="correct_ans" 
             class=" w-full px-4 py-2 border border-gray-300 rounded-xl">
             <option>Select Right Answer</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
 </select>
         </div>
-        <button type="submit" class=" w-full py-2 bg-blue-500 text-white rounded-xl">Add More</button>
-        <button type="submit" class=" w-full py-2 bg-green-500 text-white rounded-xl">Add and Submit</button>
+        <button type="submit" name="submit" value="add-more" class=" w-full py-2 bg-blue-500 text-white rounded-xl">Add More</button>
+        <button type="submit" name="submit" value="done" class=" w-full py-2 bg-green-500 text-white rounded-xl">Add and Submit</button>
     </form>
     @endif
     </div>
