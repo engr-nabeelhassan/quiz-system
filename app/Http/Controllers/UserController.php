@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Quiz;
 use App\Models\Mcq;
-
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -28,10 +30,23 @@ class UserController extends Controller
     }
 
     function userSignup(Request $request){
-        $validateData = $request->validate([
+        $validate = $request->validate([
             'name'=>'required|min:3',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:users',
             'password'=>'required|min:3|confirmed',
-        ]);     
+        ]);
+        $user = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password),
+        ]);
+
+        if ($user) {
+            Session::put('user',$user);
+            return redirect('/');
+        }
+        else{
+            return redirect('/user-signup');
+        }
     }
 }
