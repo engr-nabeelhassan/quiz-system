@@ -12,9 +12,11 @@
         <a class="bg-amber-400 text-white px-4 py-2 rounded mb-6 inline-block hover:bg-amber-500" href="/">Back</a>
     <h3 class=" text-lg text-center text-lime-900 mb-6 font-bold">The Quiz Container {{$quizCount}} And No Limit To Attempt This Quiz</h3>
     <h2 class=" text-2xl text-center text-lime-900 mb-6 font-bold">Good Luck</h2>
-
-    <a href="/user-signup" class="px-4 py-2 bg-blue-500 text-white rounded-md">Login/SignUp for Start Quiz</a>
-
+    @if(session('user'))
+    <a href="" class="px-4 py-2 bg-blue-500 text-white rounded-md">Start Quiz</a>
+    @else
+    <a href="/user-signup-quiz" class="px-4 py-2 bg-blue-500 text-white rounded-md">Login/SignUp for Start Quiz</a>
+    @endif
 </div>
 </body>
 </html>
